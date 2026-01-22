@@ -49,66 +49,101 @@ product-store/
 │   └── main.jsx
 │
 └── README.md
-⚙️ Installation & Setup
-1️⃣ Clone the repository
+```
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone the repository
+
+```bash
 git clone https://github.com/your-username/product-store.git
 cd product-store
-2️⃣ Backend Setup
+```
+
+### 2️⃣ Backend Setup
+
+```bash
 cd backend
 npm install
-Create a .env file inside the backend folder:
+```
 
+Create a `.env` file inside the backend folder:
+
+```env
 MONGO_URI=your_mongodb_connection_string
 PORT=5000
+```
+
 Run the backend server:
 
+```bash
 npm run dev
-3️⃣ Frontend Setup
+```
+
+### 3️⃣ Frontend Setup
+
+```bash
 cd frontend
 npm install
 npm run dev
-🔗 API Endpoints
-Method	Endpoint	Description
-GET	/api/products	Get all products
-POST	/api/products	Create a product
-PUT	/api/products/:id	Update a product
-DELETE	/api/products/:id	Delete a product
-🎯 What I Learned
-How frontend and backend communicate using REST APIs
+```
 
-Managing state and UI with React & Chakra UI
+---
 
-CRUD operations with MongoDB
+## 🔗 API Endpoints
 
-Proper project structure for full-stack apps
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/products` | Get all products |
+| POST | `/api/products` | Create a product |
+| PUT | `/api/products/:id` | Update a product |
+| DELETE | `/api/products/:id` | Delete a product |
 
-Debugging backend errors and handling responses
+---
 
-🌱 Future Improvements
-User authentication (Login / Signup)
+## 🎯 What I Learned
 
-Image upload using Cloudinary
+- How frontend and backend communicate using REST APIs
+- Managing state and UI with React & Chakra UI
+- CRUD operations with MongoDB
+- Proper project structure for full-stack apps
+- Debugging backend errors and handling responses
 
-Product categories & search
+---
 
-Deployment (Vercel + Render)
+## 🌱 Future Improvements
 
-🧠 Motivation
+- User authentication (Login / Signup)
+- Image upload using Cloudinary
+- Product categories & search
+- Deployment (Vercel + Render)
+
+---
+
+## 🧠 Motivation
+
 This project marks my transition from tutorial-based learning to building real full-stack applications.
 More features and improvements will be added as I continue learning 🚀
 
-📸 Screenshots
-Add screenshots here
+---
 
-🙌 Acknowledgements
-MongoDB Documentation
+## 🙌 Acknowledgements
 
-Express & React Docs
+- MongoDB Documentation
+- Express & React Docs
+- Chakra UI Community
 
-Chakra UI Community
+---
 
-🧑‍💻 Author
-Sehajdeep Singh
+## 🧑‍💻 Author
+
+**Sehajdeep Singh**  
 Learning backend & full-stack development step by step.
 
-⭐ If you like this project, feel free to star the repo!
+---
+
+## ⭐ Support
+
+If you like this project, feel free to star the repo!
