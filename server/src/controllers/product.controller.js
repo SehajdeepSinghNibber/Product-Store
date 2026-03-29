@@ -1,4 +1,4 @@
-import Product from "../models/product.model.js";;
+import Product from "../models/product.model.js";
 import mongoose from 'mongoose';
 
 export const getProducts =async (req,res)=>{
@@ -34,7 +34,7 @@ export const createProduct = async (req,res)=>{
         res.status(201).
         json({
             success:true,
-            message:newProduct
+            data:newProduct,
         })
     } catch (error) {
         console.log(error)
