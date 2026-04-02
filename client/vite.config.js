@@ -6,10 +6,10 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://product-store-1z2y.onrender.com",
-        changeOrigin: true,
-        secure: false,
-      },
-    },
+          target: "https://product-store-1z2y.onrender.com",
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, ""),
+          },
+      }
   },
 });
