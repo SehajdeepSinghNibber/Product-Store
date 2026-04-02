@@ -5,8 +5,8 @@ import { useProductStore } from "../store/product";
 import ProductCard from "../components/ProductCard";
 
 const HomePage = () => {
-	const { fetchProducts, products } = useProductStore();
-
+	const { fetchProducts, products } = useProductStore() || {};
+	
 	useEffect(() => {
 		fetchProducts();
 	}, [fetchProducts]);
@@ -34,12 +34,12 @@ const HomePage = () => {
 					spacing={10}
 					w={"full"}
 				>
-					{products.map((product) => (
+					{products?.map((product) => (
 						<ProductCard key={product._id} product={product} />
 					))}
 				</SimpleGrid>
 
-				{products.length === 0 && (
+				{products?.length === 0 && (
 					<Text fontSize='xl' textAlign={"center"} fontWeight='bold' color='gray.500'>
 						No products found{" "}
 						<Link to={"/create"}>

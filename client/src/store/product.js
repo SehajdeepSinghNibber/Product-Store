@@ -1,6 +1,8 @@
 import { create } from "zustand";
 import axios from "axios";
 
+const API_URL = import.meta.env.VITE_API_URL || "";
+
 export const useProductStore = create((set) => ({
   products: [],
 
@@ -12,7 +14,10 @@ export const useProductStore = create((set) => ({
     }
 
     try {
-      const res = await axios.post("/api/products", newProduct);
+      const res = await axios.post(
+        `${API_URL}/api/products`,
+        newProduct
+      );
 
       set((state) => ({
         products: [...state.products, res.data.data],
@@ -29,9 +34,9 @@ export const useProductStore = create((set) => ({
 
   fetchProducts: async () => {
     try {
-      const res = await axios.get("/api/products");
+      const res = await axios.get(`${API_URL}/api/products`);
 
-      set({ products: res.data.data });
+      set({ products: res.data.data || [] });
     } catch (error) {
       console.error("Error fetching products:", error);
     }
@@ -39,7 +44,9 @@ export const useProductStore = create((set) => ({
 
   deleteProduct: async (pid) => {
     try {
-      const res = await axios.delete(`/api/products/${pid}`);
+      const res = await axios.delete(
+        `${API_URL}/api/products/${pid}`
+      );
 
       if (!res.data.success) {
         return { success: false, message: res.data.message };
@@ -60,7 +67,10 @@ export const useProductStore = create((set) => ({
 
   updateProduct: async (pid, updatedProduct) => {
     try {
-      const res = await axios.put(`/api/products/${pid}`, updatedProduct);
+      const res = await axios.put(
+        `${API_URL}/api/products/${pid}`,
+        updatedProduct
+      );
 
       if (!res.data.success) {
         return { success: false, message: res.data.message };
