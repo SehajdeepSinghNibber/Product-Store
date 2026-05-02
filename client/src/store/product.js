@@ -2,6 +2,7 @@ import { create } from "zustand";
 import axios from "axios";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
+axios.defaults.withCredentials = true;
 
 export const useProductStore = create((set) => ({
   products: [],
@@ -16,7 +17,8 @@ export const useProductStore = create((set) => ({
     try {
       const res = await axios.post(
         `${API_URL}/api/products`,
-        newProduct
+        newProduct,
+        { withCredentials: true }
       );
 
       set((state) => ({
@@ -45,7 +47,8 @@ export const useProductStore = create((set) => ({
   deleteProduct: async (pid) => {
     try {
       const res = await axios.delete(
-        `${API_URL}/api/products/${pid}`
+        `${API_URL}/api/products/${pid}`,
+        { withCredentials: true }
       );
 
       if (!res.data.success) {
@@ -69,7 +72,8 @@ export const useProductStore = create((set) => ({
     try {
       const res = await axios.put(
         `${API_URL}/api/products/${pid}`,
-        updatedProduct
+        updatedProduct,
+        { withCredentials: true }
       );
 
       if (!res.data.success) {
@@ -89,5 +93,5 @@ export const useProductStore = create((set) => ({
         message: error.response?.data?.message || "Error updating product",
       };
     }
-  },
+  }
 }));

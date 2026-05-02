@@ -1,12 +1,13 @@
 import { Container, Flex, Text, Button, HStack, useColorMode } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { PlusSquareIcon } from "@chakra-ui/icons"
-import { FiSun, FiMoon } from "react-icons/fi"
+import { FiSun, FiMoon, FiLogOut, FiLogIn } from "react-icons/fi"
 import React from 'react'
+import { useAuthStore } from '../store/auth'
 
 const Navbar = () => {
-
     const {colorMode,toggleColorMode} = useColorMode()
+    const { authUser, logout } = useAuthStore()
 
   return (
     <Container 
@@ -39,16 +40,31 @@ const Navbar = () => {
                 spacing={2}
                 alignItems={"center"}
             >
-                <Link to={"/create"}>
-                    <Button>
-                        <PlusSquareIcon
-                            fontSize={"20px"}
-                        />
-                    </Button>
-                </Link>
+                {authUser && (
+                    <Link to={"/create"}>
+                        <Button>
+                            <PlusSquareIcon
+                                fontSize={"20px"}
+                            />
+                        </Button>
+                    </Link>
+                )}
+                
                 <Button onClick={toggleColorMode}>
                     {colorMode === "light"?<FiMoon/>:<FiSun/>}
                 </Button>
+
+                {authUser ? (
+                    <Button onClick={logout}>
+                        <FiLogOut />
+                    </Button>
+                ) : (
+                    <Link to="/login">
+                        <Button>
+                            <FiLogIn />
+                        </Button>
+                    </Link>
+                )}
             </HStack>
         </Flex>
     </Container>
