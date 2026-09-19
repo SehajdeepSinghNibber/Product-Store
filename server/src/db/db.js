@@ -8,9 +8,10 @@ if (!config.MONGO_URI) {
 
 const connectDB= async ()=>{
     try {
-        mongoose.connect(config.MONGO_URI)
+        await mongoose.connect(`${config.MONGO_URI}/productStore`)
         console.log("MONGO_URI connected")
     } catch (error) {
+        console.error("MongoDB connection failed:", error.message);
         process.exit(1);
     }
 }
