@@ -1,6 +1,5 @@
 import { Container, Flex, Text, HStack, Button, useColorMode } from "@chakra-ui/react";
-import { IoMoon } from "react-icons/io5"
-import { LuSun } from "react-icons/lu"
+import { Moon, Sun } from "lucide-react"
 import { PlusSquare } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -34,10 +33,10 @@ const Navbar = () => {
             <Button>
               <PlusSquare fontSize={20} />
             </Button>
-            <Button onClick={toggleColorMode} marginLeft={2}>
-              {colorMode==="light"?<IoMoon/>:<LuSun size="20" />}
-            </Button>
           </Link>
+          <Button onClick={toggleColorMode} marginLeft={2}>
+              {colorMode==="light"?<Moon/>:<Sun size="20" />}
+            </Button>
         </HStack>
 
       </Flex>
