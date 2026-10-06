@@ -13,7 +13,7 @@ export const useProductStore = create((set) => ({
             };
         }
 
-        const res = await fetch("/api/products", {
+        const res = await fetch("/api", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -32,4 +32,10 @@ export const useProductStore = create((set) => ({
             message: "Product Created Successfully",
         };
     },
+
+    fetchProducts: async ()=>{
+        const res = await fetch("/api");
+        const data = await res.json();
+        set({ products: data.product })
+    }
 }));
