@@ -6,7 +6,7 @@ A full-stack **Product Store** application built with the MERN stack. This proje
 
 - ⚛️ React.js frontend
 - 🟢 Node.js backend
-- 🚂 Express.js REST API
+- 🚂 Fastify REST API
 - 🍃 MongoDB with Mongoose
 - 🎨 Responsive UI
 - 📦 Create products
@@ -34,7 +34,7 @@ A full-stack **Product Store** application built with the MERN stack. This proje
 ### Backend
 
 - Node.js
-- Express.js
+- Fastify
 - MongoDB
 - Mongoose
 - dotenv
@@ -62,7 +62,7 @@ product-store/
 │   │   ├── db/                     # Database connection
 │   │   ├── model/                  # Mongoose models
 │   │   ├── route/                  # API routes
-│   │   └── app.js                  # Express application setup
+│   │   └── app.js                  # Fastify application setup
 │   │
 │   ├── .env                        # Environment variables
 │   ├── .gitignore
@@ -309,7 +309,7 @@ While building this project, I worked with:
 
 - MERN stack development
 - REST API development
-- Express.js routing
+- Fastify routing
 - MVC-style backend structure
 - MongoDB and Mongoose
 - CRUD operations
