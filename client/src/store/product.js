@@ -1,6 +1,7 @@
 import { create } from "zustand";
+import { devtools, persist } from "zustand/middleware";
 
-export const useProductStore = create((set) => ({
+const productStore = (set) => ({
     products: [],
 
     setProducts: (products) => set({ products }),
@@ -33,9 +34,76 @@ export const useProductStore = create((set) => ({
         };
     },
 
-    fetchProducts: async ()=>{
+    fetchProducts: async () => {
         const res = await fetch("/api");
         const data = await res.json();
-        set({ products: data.product })
-    }
-}));
+
+        set({ products: data.products });
+    },
+
+    deleteProduct: async (pid) => {
+        const res = await fetch(`/api/${pid}`, {
+            method: "DELETE",
+        });
+
+        const data = await res.json();
+
+        if (!data.success) {
+            return {
+                success: false,
+                message: data.message,
+            };
+        }
+
+        set((state) => ({
+            products: state.products.filter(
+                (product) => product._id !== pid
+            ),
+        }));
+
+        return {
+            success: true,
+            message: data.message,
+        };
+    },
+
+    updateProduct: async (pid, updatedProduct) => {
+        const res = await fetch(`/api/${pid}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(updatedProduct),
+        });
+
+        const data = await res.json();
+
+        if (!data.success) {
+            return {
+                success: false,
+                message: data.message,
+            };
+        }
+
+        set((state) => ({
+            products: state.products.map((product) =>
+                product._id === pid ? data.data : product
+            ),
+        }));
+
+        return {
+            success: true,
+            message: data.message,
+        };
+    },
+});
+
+const useProductStore = create(
+    devtools(
+        persist(productStore, {
+            name: "Product_Store",
+        })
+    )
+);
+
+export default useProductStore;
