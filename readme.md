@@ -151,7 +151,7 @@ server/
 ### 1. Clone the repository
 
 ```bash
-git clone <your-repository-url>
+git clone <https://github.com/SehajdeepSinghNibber/Product-Store>
 ```
 
 ### 2. Navigate into the project
